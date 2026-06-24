@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 30% 97%;
+    --foreground: 180 12% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 180 12% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 180 12% 10%;
+
+    --primary: 14 92% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 170 22% 92%;
+    --secondary-foreground: 180 12% 10%;
+
+    --muted: 40 20% 93%;
+    --muted-foreground: 180 8% 38%;
+
+    --accent: 170 35% 88%;
+    --accent-foreground: 180 12% 10%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 180 10% 88%;
+    --input: 180 10% 88%;
+    --ring: 14 92% 56%;
+
+    --radius: 0.75rem;
+
+    --surface-mint: 170 25% 94%;
+    --surface-mint-strong: 170 32% 82%;
+    --teal-data: 170 50% 35%;
+    --teal-dark: 180 20% 14%;
+
+    --stage-prospect: 210 70% 55%;
+    --stage-qualified: 262 60% 55%;
+    --stage-proposal: 14 98% 60%;
+    --stage-negotiation: 40 85% 52%;
+    --stage-won: 170 50% 45%;
+    --stage-lost: 0 65% 50%;
+
+    --sidebar-background: 170 25% 94%;
+    --sidebar-foreground: 180 12% 10%;
+    --sidebar-primary: 14 92% 56%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 170 20% 88%;
+    --sidebar-accent-foreground: 180 12% 10%;
+    --sidebar-border: 170 15% 88%;
+    --sidebar-ring: 14 92% 56%;
+  }
+
+  .dark {
+    --background: 180 18% 7%;
+    --foreground: 40 20% 94%;
+
+    --card: 180 14% 10%;
+    --card-foreground: 40 20% 94%;
+
+    --popover: 180 14% 10%;
+    --popover-foreground: 40 20% 94%;
+
+    --primary: 14 92% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 10% 16%;
+    --secondary-foreground: 40 20% 94%;
+
+    --muted: 180 10% 16%;
+    --muted-foreground: 180 6% 60%;
+
+    --accent: 170 25% 20%;
+    --accent-foreground: 40 20% 94%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 180 10% 18%;
+    --input: 180 10% 18%;
+    --ring: 14 92% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+  }
+
+  h1 { @apply text-balance; }
+  h2 { @apply text-balance; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .reveal-delay-1 { animation-delay: 0.08s; }
+  .reveal-delay-2 { animation-delay: 0.16s; }
+  .reveal-delay-3 { animation-delay: 0.24s; }
+  .reveal-delay-4 { animation-delay: 0.32s; }
+
+  @keyframes reveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .icon-float {
+    animation: floaty 4s ease-in-out infinite;
+  }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .underline-grow {
+    background-image: linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size 0.4s ease;
+  }
+  .underline-grow:hover {
+    background-size: 100% 2px;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.6) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
+}
